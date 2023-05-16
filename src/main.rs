@@ -160,7 +160,7 @@ async fn main() {
         draw_text(&format!("{} FPS", get_fps()), 10.0, 30.0, 40.0, YELLOW);
         draw_text(&format!("{} PARTICLES", sim.particles.len()), 10.0, 60.0, 40.0, YELLOW);
         sim.particles.iter().for_each(|p| {
-            draw_circle(p.x.x * i, screen_height() - p.x.y * j, 4.0 * i, BLUE);
+            draw_circle(p.x.x * i, screen_height() - p.x.y * j, 4.0 * if i > j { i } else { j }, BLUE);
         });
 
         next_frame().await
